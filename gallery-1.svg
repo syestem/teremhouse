@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#e9dfcf"/>
+  <path d="M0 560c150-70 260-42 400-104 170-76 270-126 500-54v498H0Z" fill="#17352d"/>
+  <rect x="220" y="360" width="460" height="270" rx="12" fill="#fbf8f2"/>
+  <path d="M190 380 450 220l260 160Z" fill="#8a6630"/>
+  <text x="60" y="800" font-family="Arial, sans-serif" font-size="32" fill="#fbf8f2">Фото: gallery-1</text>
+</svg>

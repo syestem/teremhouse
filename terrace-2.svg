@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#f4eadb"/>
+  <path d="M0 530c170-70 270-45 420-100 180-66 300-140 480-70v540H0Z" fill="#17352d"/>
+  <rect x="135" y="430" width="630" height="205" rx="12" fill="#b28a4b" opacity=".88"/>
+  <circle cx="655" cy="345" r="62" fill="#24463c"/>
+  <rect x="245" y="350" width="170" height="95" rx="8" fill="#fbf8f2"/>
+  <text x="60" y="800" font-family="Arial, sans-serif" font-size="32" fill="#fbf8f2">Фото: terrace-2</text>
+</svg>

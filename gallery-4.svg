@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#f4eadb"/>
+  <circle cx="450" cy="360" r="180" fill="#b28a4b" opacity=".48"/>
+  <circle cx="450" cy="360" r="95" fill="#17352d" opacity=".84"/>
+  <rect x="190" y="585" width="520" height="70" rx="35" fill="#dcc6a7"/>
+  <text x="60" y="800" font-family="Arial, sans-serif" font-size="32" fill="#17352d">Фото: gallery-4</text>
+</svg>

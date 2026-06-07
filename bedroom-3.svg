@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#f7f1e8"/>
+  <rect x="130" y="145" width="640" height="505" rx="18" fill="#ffffff"/>
+  <rect x="205" y="370" width="490" height="170" rx="24" fill="#dcc6a7"/>
+  <rect x="245" y="318" width="170" height="80" rx="10" fill="#f4eadb"/>
+  <rect x="485" y="318" width="170" height="80" rx="10" fill="#f4eadb"/>
+  <rect x="155" y="185" width="170" height="150" rx="8" fill="#17352d"/>
+  <text x="60" y="800" font-family="Arial, sans-serif" font-size="32" fill="#17352d">Фото: bedroom-3</text>
+</svg>

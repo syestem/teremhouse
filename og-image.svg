@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">OG-плейсхолдер ТеремХаус</title>
+  <desc id="desc">Изображение для социальных сетей, которое нужно заменить перед публикацией.</desc>
+  <rect width="1200" height="630" fill="#17352d"/>
+  <path d="M0 430c190-70 350-40 520-90 220-65 330-150 520-70 80 34 120 70 160 62v298H0Z" fill="#24463c"/>
+  <circle cx="940" cy="150" r="78" fill="#b28a4b" opacity=".76"/>
+  <text x="80" y="255" font-family="Georgia, serif" font-size="88" font-weight="700" fill="#fbf8f2">ТеремХаус</text>
+  <text x="82" y="328" font-family="Arial, sans-serif" font-size="34" fill="#dcc6a7">Премиальный загородный коттедж в Бердске</text>
+  <text x="82" y="500" font-family="Arial, sans-serif" font-size="28" fill="#fbf8f2">TODO: заменить на реальное фото</text>
+</svg>

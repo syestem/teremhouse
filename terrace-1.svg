@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#d9c3a0"/>
+  <path d="M0 470c160-80 260-52 400-115 150-68 260-138 500-58v603H0Z" fill="#24463c"/>
+  <rect x="160" y="450" width="580" height="185" rx="12" fill="#8a6630"/>
+  <g stroke="#dcc6a7" stroke-width="10">
+    <path d="M190 498h520M190 548h520M190 598h520"/>
+  </g>
+  <rect x="300" y="345" width="120" height="90" rx="8" fill="#fbf8f2"/>
+  <rect x="480" y="345" width="120" height="90" rx="8" fill="#fbf8f2"/>
+  <text x="60" y="800" font-family="Arial, sans-serif" font-size="32" fill="#fbf8f2">Фото: terrace-1</text>
+</svg>

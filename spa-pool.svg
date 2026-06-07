@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#17352d"/>
+  <rect x="120" y="150" width="960" height="560" rx="24" fill="#24463c"/>
+  <path d="M210 505c110-55 210 55 320 0s210 55 320 0 170 24 210 42v150H210Z" fill="#9bc4c7" opacity=".85"/>
+  <path d="M210 560c110-55 210 55 320 0s210 55 320 0 170 24 210 42" fill="none" stroke="#fbf8f2" stroke-width="10" opacity=".55"/>
+  <circle cx="870" cy="260" r="76" fill="#b28a4b" opacity=".7"/>
+  <text x="72" y="820" font-family="Arial, sans-serif" font-size="34" fill="#fbf8f2">Фото: spa-pool</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#fbf8f2"/>
+  <rect x="120" y="150" width="660" height="520" rx="18" fill="#f4eadb"/>
+  <rect x="180" y="430" width="540" height="120" rx="12" fill="#b28a4b" opacity=".72"/>
+  <rect x="220" y="260" width="140" height="130" rx="8" fill="#24463c"/>
+  <rect x="540" y="260" width="140" height="130" rx="8" fill="#24463c"/>
+  <text x="60" y="800" font-family="Arial, sans-serif" font-size="32" fill="#17352d">Фото: gallery-2</text>
+</svg>
