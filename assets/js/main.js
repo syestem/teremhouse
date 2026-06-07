@@ -1,14 +1,14 @@
 /* TODO: замените контакты и условия на реальные перед публикацией. */
 const SITE_CONFIG = {
-  whatsappPhone: "70000000000",
-  telegramUsername: "teremhouse_todo",
-  instagramUrl: "#",
+  whatsappPhone: "79665051325",
+  telegramUsername: "terem_house_berdsk",
+  instagramUrl: "https://www.instagram.com/terem_house_berdsk/",
   phoneDisplay: "Телефон для связи",
-  phoneHref: "tel:+70000000000",
-  email: "hello@example.com",
+  phoneHref: "tel:+79665051325",
+  email: "teremhouseberdsk@yandex.ru",
   emailDisplay: "Email для связи",
   booking: {
-    price: "60 000 ₽/сутки (уточнить)",
+    price: "60 000 ₽/сутки",
     prepayment: "20% (уточнить)",
     deposit: "15 000 ₽ (уточнить)",
     cleaning: "10 000 ₽ (уточнить)",
