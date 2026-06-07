@@ -3,10 +3,10 @@ const SITE_CONFIG = {
   whatsappPhone: "79665051325",
   telegramUsername: "terem_house_berdsk",
   instagramUrl: "https://www.instagram.com/terem_house_berdsk/",
-  phoneDisplay: "Телефон для связи",
+  phoneDisplay: "+7 (966) 505-13-25",
   phoneHref: "tel:+79665051325",
   email: "teremhouseberdsk@yandex.ru",
-  emailDisplay: "Email для связи",
+  emailDisplay: "teremhouseberdsk@yandex.ru",
   booking: {
     price: "60 000 ₽/сутки",
     prepayment: "20% (уточнить)",
@@ -15,6 +15,12 @@ const SITE_CONFIG = {
     checkIn: "с 14:00",
     checkOut: "до 12:00",
     payment: "Уточните при бронировании"
+  },
+  /* TODO: заполните только подтверждёнными рейтингами и количеством отзывов. */
+  ratings: {
+    avito: null,
+    sutochno: null,
+    other: null
   },
   defaultMessage:
     "Здравствуйте! Хочу уточнить свободные даты и условия бронирования коттеджа «ТеремХаус»."
@@ -29,6 +35,20 @@ const formatDate = (value) => {
   if (!value) return "";
   const [year, month, day] = value.split("-");
   return day && month && year ? `${day}.${month}.${year}` : value;
+};
+
+const formatInputDate = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+const addDays = (value, days) => {
+  const [year, month, day] = value.split("-").map(Number);
+  const date = new Date(year, month - 1, day);
+  date.setDate(date.getDate() + days);
+  return formatInputDate(date);
 };
 
 const buildContactLinks = (message = SITE_CONFIG.defaultMessage) => {
@@ -89,6 +109,20 @@ const applyEditableFields = () => {
     node.textContent = SITE_CONFIG.emailDisplay;
   });
 
+  Object.entries(SITE_CONFIG.ratings).forEach(([key, rating]) => {
+    if (!rating?.value || !rating?.reviews) return;
+    const valueNode = qs(`[data-editable="rating-${key}"]`);
+    const reviewsNode = qs(`[data-editable="reviews-${key}"]`);
+    const score = valueNode?.closest(".rating-score");
+    const neutral = score?.parentElement?.querySelector(".rating-neutral");
+    if (!valueNode || !reviewsNode || !score) return;
+
+    valueNode.textContent = rating.value;
+    reviewsNode.textContent = `· ${rating.reviews}`;
+    score.hidden = false;
+    if (neutral) neutral.hidden = true;
+  });
+
   qsa("[data-link]").forEach((link) => {
     const type = link.dataset.link;
     const links = buildContactLinks();
@@ -134,6 +168,39 @@ const initHeader = () => {
 
   window.addEventListener("scroll", updateHeader, { passive: true });
   updateHeader();
+};
+
+const initScrollSpy = () => {
+  const links = qsa("[data-nav] a[href^='#']");
+  const targets = links
+    .map((link) => qs(link.getAttribute("href")))
+    .filter(Boolean);
+
+  if (!links.length || !targets.length || !("IntersectionObserver" in window)) return;
+
+  const setActive = (id) => {
+    links.forEach((link) => {
+      const isActive = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      if (visible[0]) setActive(visible[0].target.id);
+    },
+    { rootMargin: "-24% 0px -62% 0px", threshold: [0, 0.01, 0.2] }
+  );
+
+  targets.forEach((target) => observer.observe(target));
 };
 
 const initReveal = () => {
@@ -286,24 +353,25 @@ const initReviews = () => {
 
 const initStickyCta = () => {
   const stickyCta = qs("[data-mobile-cta]");
-  const contacts = qs("#contacts");
+  const blockers = [qs("#contacts"), qs(".site-footer")].filter(Boolean);
   if (!stickyCta) return;
 
-  let contactsVisible = false;
+  const visibility = new Map(blockers.map((blocker) => [blocker, false]));
 
   const update = () => {
-    stickyCta.classList.toggle("is-visible", window.scrollY > 420 && !contactsVisible);
+    const blocked = Array.from(visibility.values()).some(Boolean);
+    stickyCta.classList.toggle("is-visible", window.scrollY > 420 && !blocked);
   };
 
-  if (contacts && "IntersectionObserver" in window) {
+  if (blockers.length && "IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
       (entries) => {
-        contactsVisible = entries[0]?.isIntersecting || false;
+        entries.forEach((entry) => visibility.set(entry.target, entry.isIntersecting));
         update();
       },
-      { threshold: 0.12 }
+      { rootMargin: "0px 0px 80px 0px", threshold: 0.01 }
     );
-    observer.observe(contacts);
+    blockers.forEach((blocker) => observer.observe(blocker));
   }
 
   window.addEventListener("scroll", update, { passive: true });
@@ -313,19 +381,58 @@ const initStickyCta = () => {
 const initBookingForm = () => {
   const form = qs("[data-booking-form]");
   const status = qs("[data-form-status]");
+  const checkin = qs("[name='checkin']", form || document);
+  const checkout = qs("[name='checkout']", form || document);
   if (!form) return;
 
-  const submitTo = (channel) => {
-    if (!form.reportValidity()) return;
-    const message = buildBookingMessage(form);
-    openChannel(channel, message);
-    if (status) {
-      status.textContent =
-        channel === "email"
-          ? "Откроется письмо с подготовленным текстом."
-          : "Откроется мессенджер с подготовленным текстом.";
+  const today = formatInputDate(new Date());
+  checkin.min = today;
+  checkout.min = addDays(today, 1);
+
+  const validateDates = () => {
+    checkout.setCustomValidity("");
+
+    if (checkin.value) {
+      checkout.min = addDays(checkin.value, 1);
+    } else {
+      checkout.min = addDays(today, 1);
     }
+
+    if (checkin.value && checkout.value && checkout.value <= checkin.value) {
+      const message = "Дата выезда должна быть минимум на один день позже даты заезда.";
+      checkout.setCustomValidity(message);
+      if (status) {
+        status.textContent = message;
+        status.classList.add("is-error");
+      }
+      return false;
+    }
+
+    if (status?.classList.contains("is-error")) {
+      status.textContent = "";
+      status.classList.remove("is-error");
+    }
+    return true;
   };
+
+  const submitTo = (channel) => {
+    if (!validateDates() || !form.reportValidity()) return;
+    const message = buildBookingMessage(form);
+    if (status) {
+      const labels = {
+        whatsapp: "Открываем WhatsApp с вашим запросом…",
+        telegram: "Открываем Telegram с вашим запросом…",
+        email: "Открываем письмо с вашим запросом…"
+      };
+      status.textContent = labels[channel] || labels.whatsapp;
+      status.classList.remove("is-error");
+    }
+    openChannel(channel, message);
+  };
+
+  checkin.addEventListener("change", validateDates);
+  checkout.addEventListener("change", validateDates);
+  checkout.addEventListener("input", validateDates);
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -340,6 +447,7 @@ const initBookingForm = () => {
 document.addEventListener("DOMContentLoaded", () => {
   applyEditableFields();
   initHeader();
+  initScrollSpy();
   initReveal();
   initParallax();
   initAccordion();
