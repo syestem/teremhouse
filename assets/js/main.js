@@ -3,10 +3,10 @@ const SITE_CONFIG = {
   whatsappPhone: "70000000000",
   telegramUsername: "teremhouse_todo",
   instagramUrl: "#",
-  phoneDisplay: "[TODO: телефон]",
+  phoneDisplay: "Телефон для связи",
   phoneHref: "tel:+70000000000",
   email: "hello@example.com",
-  emailDisplay: "[TODO: email]",
+  emailDisplay: "Email для связи",
   booking: {
     price: "60 000 ₽/сутки (уточнить)",
     prepayment: "20% (уточнить)",
@@ -14,7 +14,7 @@ const SITE_CONFIG = {
     cleaning: "10 000 ₽ (уточнить)",
     checkIn: "с 14:00",
     checkOut: "до 12:00",
-    payment: "[TODO: способы оплаты]"
+    payment: "Уточните при бронировании"
   },
   defaultMessage:
     "Здравствуйте! Хочу уточнить свободные даты и условия бронирования коттеджа «ТеремХаус»."
@@ -174,9 +174,16 @@ const initParallax = () => {
 };
 
 const initAccordion = () => {
-  qsa(".accordion-item").forEach((item) => {
+  qsa(".accordion-item").forEach((item, index) => {
     const button = qs("button", item);
-    if (!button) return;
+    const panel = qs(".accordion-panel", item);
+    if (!button || !panel) return;
+
+    button.id = button.id || `faq-button-${index + 1}`;
+    panel.id = panel.id || `faq-panel-${index + 1}`;
+    button.setAttribute("aria-controls", panel.id);
+    panel.setAttribute("role", "region");
+    panel.setAttribute("aria-labelledby", button.id);
 
     button.addEventListener("click", () => {
       const isOpen = item.classList.toggle("is-open");
@@ -247,37 +254,59 @@ const initGallery = () => {
 };
 
 const initReviews = () => {
+  const carousel = qs("[data-reviews-carousel]");
   const track = qs("[data-reviews-track]");
   const cards = qsa(".review-card", track || document);
   const prev = qs("[data-review-prev]");
   const next = qs("[data-review-next]");
 
-  if (!track || !cards.length || !prev || !next) return;
+  if (!carousel || !track || !cards.length || !prev || !next) return;
 
-  let index = 0;
+  const cardStep = () => cards[0].getBoundingClientRect().width + 12;
 
-  const visibleCount = () => (window.matchMedia("(min-width: 900px)").matches ? 3 : 1);
-
-  const update = () => {
-    const maxIndex = Math.max(cards.length - visibleCount(), 0);
-    index = Math.min(index, maxIndex);
-    const cardWidth = cards[0].getBoundingClientRect().width + (visibleCount() > 1 ? 12 : 0);
-    track.style.transform = `translateX(${-index * cardWidth}px)`;
-    prev.disabled = index === 0;
-    next.disabled = index === maxIndex;
+  const updateButtons = () => {
+    const atStart = carousel.scrollLeft <= 4;
+    const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 4;
+    prev.disabled = atStart;
+    next.disabled = atEnd;
   };
 
   prev.addEventListener("click", () => {
-    index = Math.max(index - 1, 0);
-    update();
+    carousel.scrollBy({ left: -cardStep(), behavior: "smooth" });
   });
 
   next.addEventListener("click", () => {
-    index += 1;
-    update();
+    carousel.scrollBy({ left: cardStep(), behavior: "smooth" });
   });
 
-  window.addEventListener("resize", update);
+  carousel.addEventListener("scroll", updateButtons, { passive: true });
+  window.addEventListener("resize", updateButtons);
+  updateButtons();
+};
+
+const initStickyCta = () => {
+  const stickyCta = qs("[data-mobile-cta]");
+  const contacts = qs("#contacts");
+  if (!stickyCta) return;
+
+  let contactsVisible = false;
+
+  const update = () => {
+    stickyCta.classList.toggle("is-visible", window.scrollY > 420 && !contactsVisible);
+  };
+
+  if (contacts && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        contactsVisible = entries[0]?.isIntersecting || false;
+        update();
+      },
+      { threshold: 0.12 }
+    );
+    observer.observe(contacts);
+  }
+
+  window.addEventListener("scroll", update, { passive: true });
   update();
 };
 
@@ -316,5 +345,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initAccordion();
   initGallery();
   initReviews();
+  initStickyCta();
   initBookingForm();
 });
