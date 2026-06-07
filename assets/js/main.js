@@ -383,11 +383,21 @@ const initBookingForm = () => {
   const status = qs("[data-form-status]");
   const checkin = qs("[name='checkin']", form || document);
   const checkout = qs("[name='checkout']", form || document);
+  const consent = qs("[name='personalDataConsent']", form || document);
   if (!form) return;
 
   const today = formatInputDate(new Date());
   checkin.min = today;
   checkout.min = addDays(today, 1);
+
+  const showConsentError = () => {
+    const message = "Пожалуйста, подтвердите согласие на обработку данных";
+    consent?.setCustomValidity(message);
+    if (status) {
+      status.textContent = message;
+      status.classList.add("is-error");
+    }
+  };
 
   const validateDates = () => {
     checkout.setCustomValidity("");
@@ -416,6 +426,13 @@ const initBookingForm = () => {
   };
 
   const submitTo = (channel) => {
+    if (consent && !consent.checked) {
+      showConsentError();
+      consent.reportValidity();
+      return;
+    }
+
+    consent?.setCustomValidity("");
     if (!validateDates() || !form.reportValidity()) return;
     const message = buildBookingMessage(form);
     if (status) {
@@ -433,6 +450,14 @@ const initBookingForm = () => {
   checkin.addEventListener("change", validateDates);
   checkout.addEventListener("change", validateDates);
   checkout.addEventListener("input", validateDates);
+  consent?.addEventListener("invalid", showConsentError);
+  consent?.addEventListener("change", () => {
+    consent.setCustomValidity("");
+    if (status?.classList.contains("is-error")) {
+      status.textContent = "";
+      status.classList.remove("is-error");
+    }
+  });
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -441,6 +466,34 @@ const initBookingForm = () => {
 
   qsa("[data-form-channel]", form).forEach((button) => {
     button.addEventListener("click", () => submitTo(button.dataset.formChannel));
+  });
+};
+
+const initCookieBanner = () => {
+  const banner = qs("[data-cookie-banner]");
+  const accept = qs("[data-cookie-accept]");
+  if (!banner || !accept) return;
+
+  const storageKey = "teremhouseCookieAccepted";
+  let isAccepted = false;
+
+  try {
+    isAccepted = localStorage.getItem(storageKey) === "true";
+  } catch (error) {
+    isAccepted = false;
+  }
+
+  if (!isAccepted) {
+    banner.hidden = false;
+  }
+
+  accept.addEventListener("click", () => {
+    banner.hidden = true;
+    try {
+      localStorage.setItem(storageKey, "true");
+    } catch (error) {
+      // Если localStorage недоступен, баннер всё равно закрывается в текущей сессии.
+    }
   });
 };
 
@@ -455,4 +508,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initReviews();
   initStickyCta();
   initBookingForm();
+  initCookieBanner();
 });

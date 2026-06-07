@@ -730,6 +730,13 @@
                 <span>Сообщение</span>
                 <textarea name="message" rows="5" placeholder="Расскажите, какие даты и формат отдыха рассматриваете"></textarea>
               </label>
+              <label class="consent-field field-wide" for="personal-data-consent">
+                <input id="personal-data-consent" type="checkbox" name="personalDataConsent" required>
+                <span>
+                  Я соглашаюсь на обработку персональных данных и принимаю условия
+                  <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Политики конфиденциальности</a>.
+                </span>
+              </label>
               <div class="form-actions">
                 <button class="btn btn-whatsapp" type="submit">Отправить в WhatsApp</button>
                 <button class="btn btn-secondary" type="button" data-form-channel="telegram">Telegram</button>
@@ -791,9 +798,13 @@
         <div>
           <h2>Документы</h2>
           <ul>
-            <li><a href="#" aria-label="Правила проживания">Правила проживания</a></li>
-            <li><a href="#" aria-label="Политика конфиденциальности">Политика конфиденциальности</a></li>
-            <li>ИП Терентьева Яна Юрьевна</li>
+            <li><a href="house-rules.html" aria-label="Правила проживания">Правила проживания</a></li>
+            <li><a href="privacy-policy.html" aria-label="Политика конфиденциальности">Политика конфиденциальности</a></li>
+            <li>
+              ИП Терентьева Яна Юрьевна
+              <!-- TODO: заменить реквизиты на подтверждённые данные. -->
+              <span class="footer-requisites">ИНН: [TODO]<br>ОГРНИП: [TODO]</span>
+            </li>
           </ul>
         </div>
       </div>
@@ -815,6 +826,14 @@
     <div class="mobile-cta" aria-label="Быстрое бронирование" data-mobile-cta>
       <a class="btn btn-primary" href="#contacts">Проверить даты</a>
       <a class="btn btn-secondary" href="#" data-link="whatsapp">Написать</a>
+    </div>
+
+    <div class="cookie-banner" hidden data-cookie-banner role="region" aria-label="Уведомление о cookie">
+      <p>
+        Сайт использует встроенную карту Яндекса, которая может применять cookie.
+        Подробнее — в <a href="privacy-policy.html">политике конфиденциальности</a>.
+      </p>
+      <button class="btn btn-small btn-primary" type="button" data-cookie-accept>Понятно</button>
     </div>
 
     <div class="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" hidden data-lightbox>
