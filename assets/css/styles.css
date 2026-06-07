@@ -331,10 +331,14 @@ p {
   place-items: center;
   border: 1px solid rgba(178, 138, 75, 0.58);
   border-radius: 50%;
-  color: var(--color-brass-dark);
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 700;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.brand-mark img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .brand-text {
@@ -602,12 +606,6 @@ p {
   gap: 26px;
 }
 
-.rating-panel {
-  display: grid;
-  gap: 12px;
-}
-
-.rating-slot,
 .trust-points article,
 .feature-card,
 .audience-cards article,
@@ -620,44 +618,6 @@ p {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: var(--shadow-card);
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-}
-
-.rating-slot {
-  min-height: 138px;
-  display: grid;
-  align-content: center;
-  gap: 8px;
-  border-radius: var(--radius-md);
-  padding: 24px;
-}
-
-.slot-platform {
-  color: var(--color-pine);
-  font-weight: 800;
-}
-
-.rating-score {
-  display: flex;
-  align-items: baseline;
-  gap: 7px;
-}
-
-.rating-score[hidden] {
-  display: none;
-}
-
-.rating-star {
-  color: var(--color-brass-dark);
-}
-
-.rating-score strong {
-  color: var(--color-brass-dark);
-  font-size: 1.3rem;
-}
-
-.rating-neutral,
-.rating-score span:last-child {
-  color: var(--color-muted);
 }
 
 .trust-reviews-link {
@@ -1082,6 +1042,49 @@ p {
   border-radius: var(--radius-sm);
 }
 
+.map-card.is-map-fallback iframe {
+  display: none;
+}
+
+.map-card.is-map-loading .map-fallback-panel,
+.map-card.is-map-loaded .map-fallback-panel {
+  display: none;
+}
+
+.map-fallback-panel {
+  display: grid;
+  min-height: 350px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-cream);
+}
+
+.map-fallback-panel img {
+  width: 100%;
+  min-height: 190px;
+  object-fit: cover;
+}
+
+.map-fallback-content {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.map-fallback-content p {
+  color: var(--color-muted);
+  font-size: 0.92rem;
+}
+
+.map-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.map-actions .btn {
+  width: 100%;
+}
+
 .map-fallback {
   padding: 10px 8px 4px;
   color: var(--color-muted);
@@ -1238,10 +1241,17 @@ p {
 }
 
 .form-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 10px;
-  align-items: center;
+  align-items: stretch;
+}
+
+.form-actions .btn {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 999px;
 }
 
 .consent-field {
@@ -1257,6 +1267,7 @@ p {
   font-size: 0.92rem;
   font-weight: 600;
   line-height: 1.55;
+  transition: background 180ms ease, box-shadow 180ms ease, color 180ms ease;
   cursor: pointer;
 }
 
@@ -1278,12 +1289,13 @@ p {
 }
 
 .consent-field:focus-within {
-  border-color: var(--color-brass);
-  box-shadow: 0 0 0 4px rgba(178, 138, 75, 0.14);
+  outline: 3px solid rgba(178, 138, 75, 0.48);
+  outline-offset: 2px;
+  box-shadow: inset 0 0 0 1px var(--color-brass);
 }
 
 .form-status {
-  min-height: 1.5em;
+  min-height: 3.2em;
   color: var(--color-pine);
   font-weight: 700;
 }
@@ -1626,7 +1638,6 @@ p {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .rating-slot:hover,
   .trust-points article:hover,
   .feature-card:hover,
   .audience-cards article:hover,
@@ -1669,7 +1680,6 @@ p {
     content: "";
   }
 
-  .rating-panel,
   .audience-cards,
   .terms-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1687,6 +1697,10 @@ p {
   .form-actions,
   .form-status {
     grid-column: 1 / -1;
+  }
+
+  .form-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .footer-grid {
@@ -1710,6 +1724,16 @@ p {
   .legal-shell h1 {
     font-size: 2.35rem;
   }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-mark img {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 @media (min-width: 900px) {
@@ -1722,9 +1746,8 @@ p {
     align-items: start;
   }
 
-  .rating-panel {
+  .trust-grid > .section-heading {
     grid-column: 1 / -1;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .trust-points {

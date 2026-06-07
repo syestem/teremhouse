@@ -1,33 +1,15 @@
-/* TODO: замените контакты и условия на реальные перед публикацией. */
-const SITE_CONFIG = {
-  whatsappPhone: "79665051325",
-  telegramUsername: "terem_house_berdsk",
-  instagramUrl: "https://www.instagram.com/terem_house_berdsk/",
-  phoneDisplay: "+7 (966) 505-13-25",
-  phoneHref: "tel:+79665051325",
-  email: "teremhouseberdsk@yandex.ru",
-  emailDisplay: "teremhouseberdsk@yandex.ru",
-  booking: {
-    price: "60 000 ₽/сутки",
-    prepayment: "20% (уточнить)",
-    deposit: "15 000 ₽ (уточнить)",
-    cleaning: "10 000 ₽ (уточнить)",
-    checkIn: "с 14:00",
-    checkOut: "до 12:00",
-    payment: "Уточните при бронировании"
-  },
-  /* TODO: заполните только подтверждёнными рейтингами и количеством отзывов. */
-  ratings: {
-    avito: null,
-    sutochno: null,
-    other: null
-  },
-  defaultMessage:
-    "Здравствуйте! Хочу уточнить свободные даты и условия бронирования коттеджа «ТеремХаус»."
-};
-
 const qs = (selector, scope = document) => scope.querySelector(selector);
 const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+
+const getSiteConfig = () => window.SITE_CONFIG || {};
+
+const getConfigValue = (path) =>
+  path.split(".").reduce((value, key) => (value && value[key] !== undefined ? value[key] : undefined), getSiteConfig());
+
+const isTodoValue = (value) => !String(value || "").trim() || /\[?\s*TODO/i.test(String(value));
+
+const visibleConfigValue = (value, fallback = "уточняется") =>
+  isTodoValue(value) ? fallback : String(value).trim();
 
 const encodeMessage = (message) => encodeURIComponent(message.trim());
 
@@ -51,15 +33,16 @@ const addDays = (value, days) => {
   return formatInputDate(date);
 };
 
-const buildContactLinks = (message = SITE_CONFIG.defaultMessage) => {
+const buildContactLinks = (message = getSiteConfig().defaultMessage || "") => {
+  const config = getSiteConfig();
   const encoded = encodeMessage(message);
 
   return {
-    whatsapp: `https://wa.me/${SITE_CONFIG.whatsappPhone}?text=${encoded}`,
-    telegram: `https://t.me/${SITE_CONFIG.telegramUsername}?text=${encoded}`,
-    email: `mailto:${SITE_CONFIG.email}?subject=${encodeURIComponent("Бронирование ТеремХаус")}&body=${encoded}`,
-    phone: SITE_CONFIG.phoneHref,
-    instagram: SITE_CONFIG.instagramUrl
+    whatsapp: `https://wa.me/${config.whatsappPhone}?text=${encoded}`,
+    telegram: `https://t.me/${config.telegramUsername}?text=${encoded}`,
+    email: `mailto:${config.email}?subject=${encodeURIComponent("Бронирование ТеремХаус")}&body=${encoded}`,
+    phone: config.phoneHref,
+    instagram: config.instagramUrl
   };
 };
 
@@ -94,33 +77,27 @@ const openChannel = (channel, message) => {
 };
 
 const applyEditableFields = () => {
+  const config = getSiteConfig();
+
   qsa("[data-field]").forEach((node) => {
     const key = node.dataset.field;
-    if (SITE_CONFIG.booking[key]) {
-      node.textContent = SITE_CONFIG.booking[key];
+    if (config.booking?.[key]) {
+      node.textContent = config.booking[key];
     }
   });
 
   qsa("[data-contact='phone']").forEach((node) => {
-    node.textContent = SITE_CONFIG.phoneDisplay;
+    node.textContent = config.phoneDisplay;
   });
 
   qsa("[data-contact='email']").forEach((node) => {
-    node.textContent = SITE_CONFIG.emailDisplay;
+    node.textContent = config.emailDisplay;
   });
 
-  Object.entries(SITE_CONFIG.ratings).forEach(([key, rating]) => {
-    if (!rating?.value || !rating?.reviews) return;
-    const valueNode = qs(`[data-editable="rating-${key}"]`);
-    const reviewsNode = qs(`[data-editable="reviews-${key}"]`);
-    const score = valueNode?.closest(".rating-score");
-    const neutral = score?.parentElement?.querySelector(".rating-neutral");
-    if (!valueNode || !reviewsNode || !score) return;
-
-    valueNode.textContent = rating.value;
-    reviewsNode.textContent = `· ${rating.reviews}`;
-    score.hidden = false;
-    if (neutral) neutral.hidden = true;
+  qsa("[data-config-text]").forEach((node) => {
+    const value = getConfigValue(node.dataset.configText);
+    const fallback = node.dataset.configFallback || "уточняется";
+    node.textContent = visibleConfigValue(value, fallback);
   });
 
   qsa("[data-link]").forEach((link) => {
@@ -131,6 +108,15 @@ const applyEditableFields = () => {
       link.setAttribute("target", type === "phone" ? "_self" : "_blank");
       link.setAttribute("rel", "noopener noreferrer");
     }
+  });
+
+  const map = config.map || {};
+  qsa("[data-map-link='yandex']").forEach((link) => {
+    if (map.placeUrl) link.setAttribute("href", map.placeUrl);
+  });
+
+  qsa("[data-map-link='google']").forEach((link) => {
+    if (map.googleMapsUrl) link.setAttribute("href", map.googleMapsUrl);
   });
 };
 
@@ -497,6 +483,66 @@ const initCookieBanner = () => {
   });
 };
 
+const initMapFallback = () => {
+  const config = getSiteConfig();
+  const card = qs("[data-map-card]");
+  const iframe = qs("[data-map-iframe]", card || document);
+  const fallback = qs("[data-map-fallback]", card || document);
+  if (!card || !iframe || !fallback) return;
+
+  let timer = null;
+  let settled = false;
+
+  const showFallback = () => {
+    if (settled) return;
+    settled = true;
+    card.classList.remove("is-map-loading", "is-map-loaded");
+    card.classList.add("is-map-fallback");
+  };
+
+  const hideFallback = () => {
+    if (settled) return;
+    settled = true;
+    window.clearTimeout(timer);
+    card.classList.remove("is-map-loading", "is-map-fallback");
+    card.classList.add("is-map-loaded");
+  };
+
+  const startWatch = () => {
+    if (timer || settled) return;
+    card.classList.add("is-map-loading");
+    timer = window.setTimeout(showFallback, 3800);
+  };
+
+  iframe.addEventListener("load", hideFallback, { once: true });
+  iframe.addEventListener("error", showFallback, { once: true });
+
+  if (config.map?.embedSrc) {
+    iframe.setAttribute("src", config.map.embedSrc);
+  }
+
+  if (!iframe.getAttribute("src")) {
+    showFallback();
+    return;
+  }
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          startWatch();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "160px 0px" }
+    );
+    observer.observe(card);
+    return;
+  }
+
+  startWatch();
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   applyEditableFields();
   initHeader();
@@ -509,4 +555,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initStickyCta();
   initBookingForm();
   initCookieBanner();
+  initMapFallback();
 });

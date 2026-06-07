@@ -73,7 +73,9 @@
     <header class="site-header" data-header>
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="ТеремХаус — к началу страницы">
-          <span class="brand-mark" aria-hidden="true">ТХ</span>
+          <span class="brand-mark" aria-hidden="true">
+            <img src="assets/img/favicon.svg" alt="ТеремХаус" width="40" height="40">
+          </span>
           <span class="brand-text">
             <span>ТеремХаус</span>
             <small>Бердск · у природы</small>
@@ -156,38 +158,9 @@
         <div class="container trust-grid">
           <div class="section-heading reveal">
             <p class="eyebrow">Доверие без лишних обещаний</p>
-            <h2 id="trust-title">Площадки, отзывы и условия — всё открыто для проверки</h2>
+            <h2 id="trust-title">Отзывы и условия — всё открыто для проверки</h2>
           </div>
 
-          <div class="rating-panel reveal" aria-label="Рейтинги на площадках">
-            <article class="rating-slot">
-              <span class="slot-platform">Авито</span>
-              <div class="rating-score" hidden>
-                <span class="rating-star" aria-hidden="true">★</span>
-                <strong data-editable="rating-avito"></strong>
-                <span data-editable="reviews-avito"></span>
-              </div>
-              <p class="rating-neutral">Рейтинг будет добавлен</p>
-            </article>
-            <article class="rating-slot">
-              <span class="slot-platform">Суточно.ру</span>
-              <div class="rating-score" hidden>
-                <span class="rating-star" aria-hidden="true">★</span>
-                <strong data-editable="rating-sutochno"></strong>
-                <span data-editable="reviews-sutochno"></span>
-              </div>
-              <p class="rating-neutral">Рейтинг будет добавлен</p>
-            </article>
-            <article class="rating-slot">
-              <span class="slot-platform">Другая площадка</span>
-              <div class="rating-score" hidden>
-                <span class="rating-star" aria-hidden="true">★</span>
-                <strong data-editable="rating-other"></strong>
-                <span data-editable="reviews-other"></span>
-              </div>
-              <p class="rating-neutral">Рейтинг будет добавлен</p>
-            </article>
-          </div>
           <a class="trust-reviews-link reveal" href="#reviews">10 отзывов реальных гостей</a>
 
           <div class="trust-points reveal">
@@ -569,17 +542,33 @@
               <li>Адрес удобно открыть в навигаторе</li>
             </ul>
           </div>
-          <div class="map-card reveal">
-            <!-- TODO: владелец может заменить src на точную ссылку из конструктора Яндекс Карт. -->
+          <div class="map-card reveal" data-map-card>
             <iframe
+              data-map-iframe
               title="Расположение «ТеремХаус»"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://yandex.ru/map-widget/v1/?mode=search&text=%D0%B3.%20%D0%91%D0%B5%D1%80%D0%B4%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%9C%D0%BE%D1%80%D1%81%D0%BA%D0%B0%D1%8F%2C%2014%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%BE%D0%BA%209&z=16"
             ></iframe>
+            <div class="map-fallback-panel" data-map-fallback>
+              <img src="assets/img/map-preview.jpg" alt="" loading="lazy" decoding="async">
+              <div class="map-fallback-content">
+                <p>
+                  Если карта не отображается, она может быть недоступна вне России
+                  (например, при включённом VPN) — откройте по кнопке ниже.
+                </p>
+                <div class="map-actions">
+                  <a class="btn btn-primary" href="https://yandex.ru/maps/-/CPdSm2OR" target="_blank" rel="noopener noreferrer" data-map-link="yandex">
+                    Открыть в Яндекс.Картах
+                  </a>
+                  <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=%D0%91%D0%B5%D1%80%D0%B4%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%9C%D0%BE%D1%80%D1%81%D0%BA%D0%B0%D1%8F%2C%2014%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%BE%D0%BA%209" target="_blank" rel="noopener noreferrer" data-map-link="google">
+                    Открыть в Google Картах
+                  </a>
+                </div>
+              </div>
+            </div>
             <p class="map-fallback">
               Если карта не открылась,
-              <a href="https://yandex.ru/maps/?text=%D0%B3.%20%D0%91%D0%B5%D1%80%D0%B4%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%9C%D0%BE%D1%80%D1%81%D0%BA%D0%B0%D1%8F%2C%2014%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%BE%D0%BA%209" target="_blank" rel="noopener noreferrer">посмотрите адрес в Яндекс Картах</a>.
+              <a href="https://yandex.ru/maps/-/CPdSm2OR" target="_blank" rel="noopener noreferrer" data-map-link="yandex">посмотрите адрес в Яндекс Картах</a>.
             </p>
           </div>
         </div>
@@ -740,7 +729,7 @@
               <div class="form-actions">
                 <button class="btn btn-whatsapp" type="submit">Отправить в WhatsApp</button>
                 <button class="btn btn-secondary" type="button" data-form-channel="telegram">Telegram</button>
-                <button class="btn btn-text" type="button" data-form-channel="email">Email</button>
+                <button class="btn btn-secondary" type="button" data-form-channel="email">Email</button>
               </div>
               <p class="form-status" id="form-status" data-form-status role="status" aria-live="polite"></p>
             </form>
@@ -779,7 +768,9 @@
       <div class="container footer-grid">
         <div>
           <a class="brand footer-brand" href="#top" aria-label="ТеремХаус — к началу страницы">
-            <span class="brand-mark" aria-hidden="true">ТХ</span>
+            <span class="brand-mark" aria-hidden="true">
+              <img src="assets/img/favicon.svg" alt="ТеремХаус" width="40" height="40">
+            </span>
             <span class="brand-text">
               <span>ТеремХаус</span>
               <small>Премиальный загородный коттедж</small>
@@ -801,9 +792,12 @@
             <li><a href="house-rules.html" aria-label="Правила проживания">Правила проживания</a></li>
             <li><a href="privacy-policy.html" aria-label="Политика конфиденциальности">Политика конфиденциальности</a></li>
             <li>
-              ИП Терентьева Яна Юрьевна
+              <span data-config-text="owner.ip">ИП Терентьева Яна Юрьевна</span>
               <!-- TODO: заменить реквизиты на подтверждённые данные. -->
-              <span class="footer-requisites">ИНН: [TODO]<br>ОГРНИП: [TODO]</span>
+              <span class="footer-requisites">
+                ИНН: <span data-config-text="owner.inn">уточняется</span><br>
+                ОГРНИП: <span data-config-text="owner.ogrnip">уточняется</span>
+              </span>
             </li>
           </ul>
         </div>
@@ -852,6 +846,7 @@
       </button>
     </div>
 
+    <script src="assets/js/site-config.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>

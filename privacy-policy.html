@@ -24,7 +24,9 @@
     <header class="site-header" data-header>
       <div class="container header-inner">
         <a class="brand" href="index.html#top" aria-label="ТеремХаус — на главную">
-          <span class="brand-mark" aria-hidden="true">ТХ</span>
+          <span class="brand-mark" aria-hidden="true">
+            <img src="assets/img/favicon.svg" alt="ТеремХаус" width="40" height="40">
+          </span>
           <span class="brand-text">
             <span>ТеремХаус</span>
             <small>Бердск · у природы</small>
@@ -70,7 +72,7 @@
           <a class="legal-back" href="index.html">← На главную</a>
           <p class="eyebrow">Документы</p>
           <h1>Политика в отношении обработки персональных данных</h1>
-          <p class="legal-updated">Обновлено: [TODO дата]</p>
+          <p class="legal-updated">Обновлено: <span data-config-text="docs.privacyUpdated" data-config-fallback="дата уточняется">дата уточняется</span></p>
         </div>
       </section>
 
@@ -79,8 +81,11 @@
           <section>
             <h2 id="privacy-title">1. Общие положения</h2>
             <p>
-              Оператор персональных данных: ИП Терентьева Яна Юрьевна, ИНН [TODO],
-              ОГРНИП [TODO], адрес [TODO].
+              Оператор персональных данных:
+              <span data-config-text="owner.ip">ИП Терентьева Яна Юрьевна</span>,
+              ИНН <span data-config-text="owner.inn">уточняется</span>,
+              ОГРНИП <span data-config-text="owner.ogrnip">уточняется</span>,
+              адрес <span data-config-text="owner.address">уточняется</span>.
             </p>
             <p>
               Настоящая Политика разработана в соответствии с Федеральным законом №&nbsp;152-ФЗ
@@ -130,8 +135,8 @@
           <section>
             <h2>7. Cookie и счётчики</h2>
             <p>
-              Сайт может использовать встроенную карту Яндекса и [TODO: метрика, если подключите],
-              которые могут устанавливать cookie.
+              Сайт может использовать встроенную карту Яндекса и сервис веб-аналитики, если он будет
+              подключён. Такие сервисы могут устанавливать cookie.
             </p>
           </section>
 
@@ -140,7 +145,7 @@
             <p>
               Пользователь вправе запросить доступ к своим данным, их уточнение, удаление или отзыв
               согласия на обработку. Запрос можно направить на email
-              <a href="mailto:teremhouseberdsk@yandex.ru" data-link="email">teremhouseberdsk@yandex.ru</a>.
+              <a href="#" data-link="email" data-contact="email">Email для связи</a>.
             </p>
           </section>
 
@@ -148,7 +153,7 @@
             <h2>9. Изменения политики</h2>
             <p>
               Оператор вправе обновлять настоящую Политику. Дата публикации и последнего обновления:
-              [TODO дата].
+              <span data-config-text="docs.privacyUpdated" data-config-fallback="дата уточняется">дата уточняется</span>.
             </p>
           </section>
 
@@ -163,7 +168,9 @@
       <div class="container footer-grid">
         <div>
           <a class="brand footer-brand" href="index.html#top" aria-label="ТеремХаус — на главную">
-            <span class="brand-mark" aria-hidden="true">ТХ</span>
+            <span class="brand-mark" aria-hidden="true">
+              <img src="assets/img/favicon.svg" alt="ТеремХаус" width="40" height="40">
+            </span>
             <span class="brand-text">
               <span>ТеремХаус</span>
               <small>Премиальный загородный коттедж</small>
@@ -185,15 +192,19 @@
             <li><a href="house-rules.html">Правила проживания</a></li>
             <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
             <li>
-              ИП Терентьева Яна Юрьевна
+              <span data-config-text="owner.ip">ИП Терентьева Яна Юрьевна</span>
               <!-- TODO: заменить реквизиты на подтверждённые данные. -->
-              <span class="footer-requisites">ИНН: [TODO]<br>ОГРНИП: [TODO]</span>
+              <span class="footer-requisites">
+                ИНН: <span data-config-text="owner.inn">уточняется</span><br>
+                ОГРНИП: <span data-config-text="owner.ogrnip">уточняется</span>
+              </span>
             </li>
           </ul>
         </div>
       </div>
     </footer>
 
+    <script src="assets/js/site-config.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>

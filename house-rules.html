@@ -24,7 +24,9 @@
     <header class="site-header" data-header>
       <div class="container header-inner">
         <a class="brand" href="index.html#top" aria-label="ТеремХаус — на главную">
-          <span class="brand-mark" aria-hidden="true">ТХ</span>
+          <span class="brand-mark" aria-hidden="true">
+            <img src="assets/img/favicon.svg" alt="ТеремХаус" width="40" height="40">
+          </span>
           <span class="brand-text">
             <span>ТеремХаус</span>
             <small>Бердск · у природы</small>
@@ -70,7 +72,7 @@
           <a class="legal-back" href="index.html">← На главную</a>
           <p class="eyebrow">Документы</p>
           <h1>Правила проживания</h1>
-          <p class="legal-updated">Обновлено: [TODO дата]</p>
+          <p class="legal-updated">Обновлено: <span data-config-text="docs.rulesUpdated" data-config-fallback="дата уточняется">дата уточняется</span></p>
         </div>
       </section>
 
@@ -78,7 +80,7 @@
         <div class="legal-shell legal-card">
           <section>
             <h2 id="rules-title">1. Заезд и выезд</h2>
-            <p>Заезд — с&nbsp;14:00, выезд — до&nbsp;12:00.</p>
+            <p>Заезд — <span data-field="checkIn">с&nbsp;14:00</span>, выезд — <span data-field="checkOut">до&nbsp;12:00</span>.</p>
           </section>
 
           <section>
@@ -93,15 +95,17 @@
             <h2>3. Формат отдыха</h2>
             <p>
               «ТеремХаус» — дом для тишины, приватности и спокойного отдыха. Шумные вечеринки
-              не допускаются. Ночной режим тишины: [TODO время].
+              не допускаются. Ночной режим тишины:
+              <span data-config-text="docs.quietHours">уточняется</span>.
             </p>
           </section>
 
           <section>
             <h2>4. Задаток, депозит и клининг</h2>
             <p>
-              Задаток — 20% (уточнить). Депозит — 15&nbsp;000&nbsp;₽ (уточнить). Депозит возвращается
-              после проверки дома при отсутствии ущерба. Клининг — 10&nbsp;000&nbsp;₽ (уточнить).
+              Задаток — <span data-field="prepayment">20% (уточнить)</span>.
+              Депозит — <span data-field="deposit">15&nbsp;000&nbsp;₽ (уточнить)</span>. Депозит возвращается
+              после проверки дома при отсутствии ущерба. Клининг — <span data-field="cleaning">10&nbsp;000&nbsp;₽ (уточнить)</span>.
             </p>
           </section>
 
@@ -115,15 +119,15 @@
           <section>
             <h2>6. Курение, животные и дети</h2>
             <ul>
-              <li>Курение: [TODO].</li>
-              <li>Животные: [TODO].</li>
-              <li>Размещение с детьми: [TODO].</li>
+              <li>Курение: <span data-config-text="docs.smoking">уточняется</span>.</li>
+              <li>Животные: <span data-config-text="docs.pets">уточняется</span>.</li>
+              <li>Размещение с детьми: <span data-config-text="docs.children">уточняется</span>.</li>
             </ul>
           </section>
 
           <section>
             <h2>7. Отмена и перенос бронирования</h2>
-            <p>Условия отмены и переноса бронирования: [TODO].</p>
+            <p>Условия отмены и переноса бронирования: <span data-config-text="docs.cancellation">уточняется</span>.</p>
           </section>
 
           <section>
@@ -153,7 +157,9 @@
       <div class="container footer-grid">
         <div>
           <a class="brand footer-brand" href="index.html#top" aria-label="ТеремХаус — на главную">
-            <span class="brand-mark" aria-hidden="true">ТХ</span>
+            <span class="brand-mark" aria-hidden="true">
+              <img src="assets/img/favicon.svg" alt="ТеремХаус" width="40" height="40">
+            </span>
             <span class="brand-text">
               <span>ТеремХаус</span>
               <small>Премиальный загородный коттедж</small>
@@ -175,15 +181,19 @@
             <li><a href="house-rules.html">Правила проживания</a></li>
             <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
             <li>
-              ИП Терентьева Яна Юрьевна
+              <span data-config-text="owner.ip">ИП Терентьева Яна Юрьевна</span>
               <!-- TODO: заменить реквизиты на подтверждённые данные. -->
-              <span class="footer-requisites">ИНН: [TODO]<br>ОГРНИП: [TODO]</span>
+              <span class="footer-requisites">
+                ИНН: <span data-config-text="owner.inn">уточняется</span><br>
+                ОГРНИП: <span data-config-text="owner.ogrnip">уточняется</span>
+              </span>
             </li>
           </ul>
         </div>
       </div>
     </footer>
 
+    <script src="assets/js/site-config.js" defer></script>
     <script src="assets/js/main.js" defer></script>
   </body>
 </html>
