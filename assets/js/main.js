@@ -33,6 +33,16 @@ const addDays = (value, days) => {
   return formatInputDate(date);
 };
 
+const getOfferLabel = (value) => {
+  const labels = {
+    wholeHouse: getConfigValue("offers.wholeHouse.formLabel") || getConfigValue("offers.wholeHouse.title"),
+    apartments: getConfigValue("offers.apartments.formLabel") || getConfigValue("offers.apartments.title"),
+    eveningRental: getConfigValue("offers.eveningRental.formLabel") || getConfigValue("offers.eveningRental.title")
+  };
+
+  return visibleConfigValue(labels[value] || labels.wholeHouse, "Весь коттедж");
+};
+
 const buildContactLinks = (message = getSiteConfig().defaultMessage || "") => {
   const config = getSiteConfig();
   const encoded = encodeMessage(message);
@@ -47,7 +57,11 @@ const buildContactLinks = (message = getSiteConfig().defaultMessage || "") => {
 };
 
 const buildBookingMessage = (form) => {
+  const config = getSiteConfig();
   const data = new FormData(form);
+  const rentalFormat = String(data.get("rentalFormat") || "wholeHouse");
+  const rentalFormatLabel = getOfferLabel(rentalFormat);
+  const apartmentDays = visibleConfigValue(config.offers?.apartments?.bookingDays, "Пн–Чт");
   const name = String(data.get("name") || "").trim();
   const phone = String(data.get("phone") || "").trim();
   const checkin = formatDate(String(data.get("checkin") || ""));
@@ -56,6 +70,9 @@ const buildBookingMessage = (form) => {
   const message = String(data.get("message") || "").trim();
 
   return [
+    `Формат: ${rentalFormatLabel}`,
+    rentalFormat === "apartments" ? `Примечание: проживание в апартаментах доступно только ${apartmentDays}.` : "",
+    "",
     "Здравствуйте! Хочу забронировать коттедж «ТеремХаус».",
     name ? `Имя: ${name}` : "",
     phone ? `Телефон: ${phone}` : "",
@@ -364,6 +381,35 @@ const initStickyCta = () => {
   update();
 };
 
+const setRentalFormat = (value, shouldFocus = false) => {
+  const input = qs(`[name='rentalFormat'][value='${value}']`);
+  if (!input) return false;
+  input.checked = true;
+  input.dispatchEvent(new Event("change", { bubbles: true }));
+  if (shouldFocus) input.focus();
+  return true;
+};
+
+const initFormats = () => {
+  const contactSection = qs("#contacts");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  qsa("[data-format-cta]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const value = link.dataset.formatValue;
+      if (!value) return;
+
+      event.preventDefault();
+      setRentalFormat(value);
+      contactSection?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+
+      window.setTimeout(() => {
+        setRentalFormat(value, true);
+      }, prefersReducedMotion ? 0 : 420);
+    });
+  });
+};
+
 const initBookingForm = () => {
   const form = qs("[data-booking-form]");
   const status = qs("[data-form-status]");
@@ -553,6 +599,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initGallery();
   initReviews();
   initStickyCta();
+  initFormats();
   initBookingForm();
   initCookieBanner();
   initMapFallback();
