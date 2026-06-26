@@ -117,6 +117,21 @@ const applyEditableFields = () => {
     node.textContent = visibleConfigValue(value, fallback);
   });
 
+  qsa("[data-config-src]").forEach((node) => {
+    const value = getConfigValue(node.dataset.configSrc);
+    if (!isTodoValue(value)) {
+      node.setAttribute("src", String(value).trim());
+    }
+  });
+
+  qsa("[data-config-bg]").forEach((node) => {
+    const value = getConfigValue(node.dataset.configBg);
+    if (!isTodoValue(value)) {
+      const imageUrl = new URL(String(value).trim(), window.location.href);
+      node.style.setProperty("--format-image", `url("${imageUrl.href}")`);
+    }
+  });
+
   qsa("[data-link]").forEach((link) => {
     const type = link.dataset.link;
     const links = buildContactLinks();

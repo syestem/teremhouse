@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Apartment format</title>
+  <desc id="desc">A calm interior illustration of separate apartment doors, warm light, wooden textures, and quiet private rooms.</desc>
+  <defs>
+    <linearGradient id="room" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2d463d"/>
+      <stop offset=".55" stop-color="#766246"/>
+      <stop offset="1" stop-color="#f0debf"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#ead8b8"/>
+      <stop offset=".5" stop-color="#c9aa78"/>
+      <stop offset="1" stop-color="#8a6840"/>
+    </linearGradient>
+    <linearGradient id="door" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#24463c"/>
+      <stop offset="1" stop-color="#122b25"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="47%" cy="20%" r="44%">
+      <stop offset="0" stop-color="#fff1bd" stop-opacity=".92"/>
+      <stop offset=".5" stop-color="#c99d54" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#c99d54" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#room)"/>
+  <rect width="1600" height="1000" fill="url(#lamp)"/>
+  <path d="M0 244h1600v756H0Z" fill="url(#wall)" opacity=".86"/>
+  <path d="M0 710h1600v290H0Z" fill="#1b312b"/>
+  <path d="M0 719h1600" stroke="#f9efd9" stroke-width="8" opacity=".45"/>
+  <ellipse cx="822" cy="817" rx="560" ry="70" fill="#101817" opacity=".35" filter="url(#blur)"/>
+  <g transform="translate(236 250)">
+    <path d="M0 0h278v566H0Z" fill="#d4bd94"/>
+    <path d="M38 74h202v492H38Z" fill="url(#door)"/>
+    <path d="M70 118h138v146H70Z" fill="#f7e2aa" opacity=".9"/>
+    <path d="M70 303h138v146H70Z" fill="#f7e2aa" opacity=".72"/>
+    <circle cx="211" cy="309" r="10" fill="#c79d5c"/>
+    <path d="M36 566h206" stroke="#0d211d" stroke-width="24"/>
+  </g>
+  <g transform="translate(661 188)">
+    <path d="M0 0h278v628H0Z" fill="#f2e0bf"/>
+    <path d="M38 91h202v537H38Z" fill="url(#door)"/>
+    <path d="M70 136h138v160H70Z" fill="#f9e6af" opacity=".94"/>
+    <path d="M70 337h138v170H70Z" fill="#f9e6af" opacity=".78"/>
+    <circle cx="211" cy="353" r="10" fill="#c79d5c"/>
+    <path d="M36 628h206" stroke="#0d211d" stroke-width="24"/>
+  </g>
+  <g transform="translate(1086 250)">
+    <path d="M0 0h278v566H0Z" fill="#b99561"/>
+    <path d="M38 74h202v492H38Z" fill="url(#door)"/>
+    <path d="M70 118h138v146H70Z" fill="#f7e2aa" opacity=".9"/>
+    <path d="M70 303h138v146H70Z" fill="#f7e2aa" opacity=".72"/>
+    <circle cx="211" cy="309" r="10" fill="#c79d5c"/>
+    <path d="M36 566h206" stroke="#0d211d" stroke-width="24"/>
+  </g>
+  <path d="M205 244h1190" stroke="#f9f0dc" stroke-width="5" opacity=".42"/>
+  <path d="M205 817h1190" stroke="#0f241f" stroke-width="8" opacity=".58"/>
+  <path d="M0 865c230-64 438-72 624-24 140 36 277 35 412-4 182-52 370-40 564 37v126H0Z" fill="#132b25" opacity=".86"/>
+</svg>

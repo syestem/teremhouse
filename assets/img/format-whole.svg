@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Whole house format</title>
+  <desc id="desc">A calm premium illustration of a large country house with warm windows, terraces, forest, and soft evening light.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#102923"/>
+      <stop offset=".48" stop-color="#315246"/>
+      <stop offset="1" stop-color="#c4a775"/>
+    </linearGradient>
+    <linearGradient id="house" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7efe2"/>
+      <stop offset=".55" stop-color="#d7c0a0"/>
+      <stop offset="1" stop-color="#8e6c46"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#17352d"/>
+      <stop offset="1" stop-color="#0f211d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="68%" cy="24%" r="46%">
+      <stop offset="0" stop-color="#f3d99f" stop-opacity=".85"/>
+      <stop offset=".42" stop-color="#d9b76f" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#d9b76f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <rect width="1600" height="1000" fill="url(#glow)"/>
+  <path d="M0 700c152-52 285-67 420-42 171 31 279 9 413-28 155-43 319-44 490 10 107 33 202 41 277 19v341H0Z" fill="#162f28"/>
+  <path d="M0 782c207-54 403-51 589 7 139 43 246 48 372 17 214-53 421-35 639 51v143H0Z" fill="#203d34"/>
+  <g opacity=".5">
+    <path d="M53 625 104 415l51 210Z" fill="#0f241f"/>
+    <path d="M148 641 211 372l64 269Z" fill="#0f241f"/>
+    <path d="M1271 622 1325 395l56 227Z" fill="#0f241f"/>
+    <path d="M1385 670 1459 354l73 316Z" fill="#0f241f"/>
+  </g>
+  <ellipse cx="915" cy="829" rx="444" ry="56" fill="#0b1715" opacity=".34" filter="url(#soft)"/>
+  <g transform="translate(410 330)">
+    <path d="M86 288h768v283H86Z" fill="url(#house)"/>
+    <path d="M36 293 470 20l434 273H36Z" fill="url(#roof)"/>
+    <path d="M225 153h490l189 140H36Z" fill="#24463c"/>
+    <path d="M132 331h164v166H132Z" fill="#24463c"/>
+    <path d="M337 331h132v166H337Z" fill="#17352d"/>
+    <path d="M510 331h132v166H510Z" fill="#17352d"/>
+    <path d="M683 331h132v166H683Z" fill="#24463c"/>
+    <path d="M168 360h91v112h-91Z" fill="#f3d99f" opacity=".92"/>
+    <path d="M369 360h68v112h-68Z" fill="#f6dfaa" opacity=".92"/>
+    <path d="M542 360h68v112h-68Z" fill="#f6dfaa" opacity=".92"/>
+    <path d="M718 360h61v112h-61Z" fill="#f3d99f" opacity=".92"/>
+    <path d="M430 451h78v120h-78Z" fill="#3a3028"/>
+    <path d="M68 571h812v34H68Z" fill="#6b5238"/>
+    <path d="M41 605h865v36H41Z" fill="#382c24"/>
+    <path d="M112 514h714" stroke="#f8f2e8" stroke-width="10" opacity=".55"/>
+    <path d="M214 331v166M403 331v166M576 331v166M748 331v166" stroke="#f8f2e8" stroke-width="5" opacity=".36"/>
+  </g>
+  <path d="M0 885c150-52 353-59 610-21 211 31 386 29 525-8 169-45 324-37 465 25v119H0Z" fill="#102923" opacity=".82"/>
+</svg>

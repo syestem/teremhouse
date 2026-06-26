@@ -201,232 +201,280 @@
             </p>
           </div>
 
-          <div class="formats-grid reveal" data-formats>
-            <article class="format-card format-card-primary accordion-item" data-format-item>
-              <div class="format-card-head">
-                <span class="format-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M3 20V9l9-6 9 6v11h-7v-6h-4v6H3Zm2-2h3v-6h8v6h3v-8l-7-4.7L5 10v8Z"/></svg>
-                </span>
-                <div class="format-copy">
+          <div class="formats-scenes reveal" data-formats>
+            <article
+              class="format-scene format-scene-primary format-scene-left accordion-item"
+              data-format-item
+              data-format-key="wholeHouse"
+              data-config-bg="offers.wholeHouse.image"
+            >
+              <img
+                class="format-scene-media"
+                src="assets/img/format-whole.svg"
+                data-config-src="offers.wholeHouse.image"
+                alt="Весь коттедж «ТеремХаус» с общими пространствами и SPA"
+                loading="lazy"
+                decoding="async"
+              >
+              <div class="format-scene-shade" aria-hidden="true"></div>
+              <div class="format-scene-inner">
+                <div class="format-scene-copy">
+                  <p class="format-number">Формат 01</p>
                   <p class="format-kicker" data-config-text="offers.wholeHouse.keyFact">всё пространство</p>
                   <h3 data-config-text="offers.wholeHouse.title">Весь коттедж</h3>
                   <p data-config-text="offers.wholeHouse.note">Всё пространство открыто</p>
-                </div>
-                <dl class="format-price">
-                  <dt>Цена</dt>
-                  <dd data-config-text="offers.wholeHouse.price" data-config-fallback="по запросу">по запросу</dd>
-                </dl>
-                <button class="format-toggle" type="button" aria-expanded="false" data-format-toggle>
-                  Подробнее
-                  <span aria-hidden="true"></span>
-                </button>
-              </div>
-              <div class="accordion-panel format-panel" data-format-panel>
-                <div class="format-panel-inner">
-                  <div class="format-panel-main">
-                    <p data-config-text="offers.wholeHouse.summary">
-                      Дом целиком для семьи или спокойной компании: спальни, гостиная, кухня, SPA-зона и террасы доступны в одном сценарии отдыха.
-                    </p>
-                    <div class="format-detail-grid">
-                      <div>
-                        <h4>Что входит</h4>
-                        <ul>
-                          <li data-config-text="offers.wholeHouse.includes.bedrooms">4 спальни с размещением</li>
-                          <li data-config-text="offers.wholeHouse.includes.commonAreas">гостиная и кухня</li>
-                          <li data-config-text="offers.wholeHouse.includes.spa">SPA-зона</li>
-                          <li data-config-text="offers.wholeHouse.includes.terraces">террасы</li>
-                        </ul>
+                  <dl class="format-price">
+                    <dt>Цена</dt>
+                    <dd data-config-text="offers.wholeHouse.price" data-config-fallback="по запросу">по запросу</dd>
+                  </dl>
+                  <div class="format-actions">
+                    <button class="format-toggle" type="button" aria-expanded="false" data-format-toggle>
+                      Подробнее
+                      <span aria-hidden="true"></span>
+                    </button>
+                    <a class="btn btn-primary" href="#contacts" data-format-cta data-format-value="wholeHouse">
+                      Забронировать этот формат
+                    </a>
+                  </div>
+                  <div class="accordion-panel format-panel" data-format-panel>
+                    <div class="format-panel-inner">
+                      <div class="format-panel-main">
+                        <p data-config-text="offers.wholeHouse.summary">
+                          Дом целиком для семьи или спокойной компании: спальни, гостиная, кухня, SPA-зона и террасы доступны в одном сценарии отдыха.
+                        </p>
+                        <div class="format-detail-grid">
+                          <div>
+                            <h4>Что входит</h4>
+                            <ul>
+                              <li data-config-text="offers.wholeHouse.includes.bedrooms">4 спальни с размещением</li>
+                              <li data-config-text="offers.wholeHouse.includes.commonAreas">гостиная и кухня</li>
+                              <li data-config-text="offers.wholeHouse.includes.spa">SPA-зона</li>
+                              <li data-config-text="offers.wholeHouse.includes.terraces">террасы</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h4>Что не входит</h4>
+                            <ul>
+                              <li data-config-text="offers.wholeHouse.excludes.restrictions">
+                                Отдельных ограничений по общим зонам нет в рамках согласованной аренды
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <h4>Что не входит</h4>
-                        <ul>
-                          <li data-config-text="offers.wholeHouse.excludes.restrictions">
-                            Отдельных ограничений по общим зонам нет в рамках согласованной аренды
-                          </li>
-                        </ul>
-                      </div>
+                      <aside class="format-panel-aside">
+                        <dl>
+                          <div>
+                            <dt>Вместимость и комнаты</dt>
+                            <dd data-config-text="offers.wholeHouse.capacity">4 спальни, гостиная, кухня, SPA-зона и террасы</dd>
+                          </div>
+                          <div>
+                            <dt>Окно бронирования</dt>
+                            <dd data-config-text="offers.wholeHouse.bookingWindow">По согласованию выбранных дат</dd>
+                          </div>
+                          <div>
+                            <dt>Цена</dt>
+                            <dd data-config-text="offers.wholeHouse.price" data-config-fallback="по запросу">по запросу</dd>
+                          </div>
+                        </dl>
+                        <a class="format-terms-link" href="#terms">Общие условия</a>
+                      </aside>
                     </div>
                   </div>
-                  <aside class="format-panel-aside">
-                    <dl>
-                      <div>
-                        <dt>Вместимость и комнаты</dt>
-                        <dd data-config-text="offers.wholeHouse.capacity">4 спальни, гостиная, кухня, SPA-зона и террасы</dd>
-                      </div>
-                      <div>
-                        <dt>Окно бронирования</dt>
-                        <dd data-config-text="offers.wholeHouse.bookingWindow">По согласованию выбранных дат</dd>
-                      </div>
-                      <div>
-                        <dt>Цена</dt>
-                        <dd data-config-text="offers.wholeHouse.price" data-config-fallback="по запросу">по запросу</dd>
-                      </div>
-                    </dl>
-                    <a class="btn btn-primary" href="#contacts" data-format-cta data-format-value="wholeHouse">Забронировать этот формат</a>
-                    <a class="format-terms-link" href="#terms">Общие условия</a>
-                  </aside>
                 </div>
               </div>
             </article>
 
-            <article class="format-card accordion-item" data-format-item>
-              <div class="format-card-head">
-                <span class="format-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M5 21V4h14v17h-2v-2H7v2H5Zm2-4h10V6H7v11Zm2-8h2v2H9V9Zm4 0h2v2h-2V9Zm-4 4h2v2H9v-2Zm4 0h2v2h-2v-2Z"/></svg>
-                </span>
-                <div class="format-copy">
+            <article
+              class="format-scene format-scene-right accordion-item"
+              data-format-item
+              data-format-key="apartments"
+              data-config-bg="offers.apartments.image"
+            >
+              <img
+                class="format-scene-media"
+                src="assets/img/format-apartments.svg"
+                data-config-src="offers.apartments.image"
+                alt="Отдельные апартаменты «ТеремХаус» для проживания в будние дни"
+                loading="lazy"
+                decoding="async"
+              >
+              <div class="format-scene-shade" aria-hidden="true"></div>
+              <div class="format-scene-inner">
+                <div class="format-scene-copy">
+                  <p class="format-number">Формат 02</p>
                   <p class="format-kicker" data-config-text="offers.apartments.keyFact">проживание Пн–Чт</p>
                   <h3 data-config-text="offers.apartments.title">Апартаменты</h3>
                   <p data-config-text="offers.apartments.note">Гостиная недоступна, SPA оплачивается отдельно</p>
-                </div>
-                <dl class="format-price">
-                  <dt>Цена</dt>
-                  <dd data-config-text="offers.apartments.price" data-config-fallback="по запросу">по запросу</dd>
-                </dl>
-                <button class="format-toggle" type="button" aria-expanded="false" data-format-toggle>
-                  Подробнее
-                  <span aria-hidden="true"></span>
-                </button>
-              </div>
-              <div class="accordion-panel format-panel" data-format-panel>
-                <div class="format-panel-inner">
-                  <div class="format-panel-main">
-                    <p data-config-text="offers.apartments.summary">
-                      Проживание в отдельном апартаменте для спокойного отдыха в будние дни.
-                    </p>
-                    <div class="format-detail-grid">
-                      <div>
-                        <h4>Что входит</h4>
-                        <ul>
-                          <li data-config-text="offers.apartments.includes.apartment">отдельный апартамент</li>
-                          <li data-config-text="offers.apartments.includes.privacy">приватное проживание</li>
-                        </ul>
+                  <dl class="format-price">
+                    <dt>Цена</dt>
+                    <dd data-config-text="offers.apartments.price" data-config-fallback="по запросу">по запросу</dd>
+                  </dl>
+                  <div class="format-actions">
+                    <button class="format-toggle" type="button" aria-expanded="false" data-format-toggle>
+                      Подробнее
+                      <span aria-hidden="true"></span>
+                    </button>
+                    <a class="btn btn-primary" href="#contacts" data-format-cta data-format-value="apartments">
+                      Забронировать этот формат
+                    </a>
+                  </div>
+                  <div class="accordion-panel format-panel" data-format-panel>
+                    <div class="format-panel-inner">
+                      <div class="format-panel-main">
+                        <p data-config-text="offers.apartments.summary">
+                          Проживание в отдельном апартаменте для спокойного отдыха в будние дни.
+                        </p>
+                        <div class="format-detail-grid">
+                          <div>
+                            <h4>Что входит</h4>
+                            <ul>
+                              <li data-config-text="offers.apartments.includes.apartment">отдельный апартамент</li>
+                              <li data-config-text="offers.apartments.includes.privacy">приватное проживание</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h4>Что не входит</h4>
+                            <ul>
+                              <li data-config-text="offers.apartments.excludes.living">Гостиная недоступна</li>
+                              <li data-config-text="offers.apartments.excludes.spa">SPA — за отдельную плату</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="format-addons">
+                          <h4 data-config-text="offers.apartments.addonNote">Можно докупить доступ к гостиной, SPA или террасе</h4>
+                          <dl>
+                            <div>
+                              <dt>Гостиная</dt>
+                              <dd data-config-text="offers.addons.living" data-config-fallback="по запросу">по запросу</dd>
+                            </div>
+                            <div>
+                              <dt>SPA</dt>
+                              <dd data-config-text="offers.addons.spa" data-config-fallback="по запросу">по запросу</dd>
+                            </div>
+                            <div>
+                              <dt>Терраса</dt>
+                              <dd data-config-text="offers.addons.terrace" data-config-fallback="по запросу">по запросу</dd>
+                            </div>
+                          </dl>
+                        </div>
                       </div>
-                      <div>
-                        <h4>Что не входит</h4>
-                        <ul>
-                          <li data-config-text="offers.apartments.excludes.living">Гостиная недоступна</li>
-                          <li data-config-text="offers.apartments.excludes.spa">SPA — за отдельную плату</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="format-addons">
-                      <h4 data-config-text="offers.apartments.addonNote">Можно докупить доступ к гостиной, SPA или террасе</h4>
-                      <dl>
-                        <div>
-                          <dt>Гостиная</dt>
-                          <dd data-config-text="offers.addons.living" data-config-fallback="по запросу">по запросу</dd>
-                        </div>
-                        <div>
-                          <dt>SPA</dt>
-                          <dd data-config-text="offers.addons.spa" data-config-fallback="по запросу">по запросу</dd>
-                        </div>
-                        <div>
-                          <dt>Терраса</dt>
-                          <dd data-config-text="offers.addons.terrace" data-config-fallback="по запросу">по запросу</dd>
-                        </div>
-                      </dl>
+                      <aside class="format-panel-aside">
+                        <dl>
+                          <div>
+                            <dt>Вместимость и комнаты</dt>
+                            <dd data-config-text="offers.apartments.capacity">3 отдельных апартамента</dd>
+                          </div>
+                          <div>
+                            <dt>Окно бронирования</dt>
+                            <dd data-config-text="offers.apartments.bookingWindow">Бронирование проживания только Пн–Чт</dd>
+                          </div>
+                          <div>
+                            <dt>Цена</dt>
+                            <dd data-config-text="offers.apartments.price" data-config-fallback="по запросу">по запросу</dd>
+                          </div>
+                        </dl>
+                        <a class="format-terms-link" href="#terms">Общие условия</a>
+                      </aside>
                     </div>
                   </div>
-                  <aside class="format-panel-aside">
-                    <dl>
-                      <div>
-                        <dt>Вместимость и комнаты</dt>
-                        <dd data-config-text="offers.apartments.capacity">3 отдельных апартамента</dd>
-                      </div>
-                      <div>
-                        <dt>Окно бронирования</dt>
-                        <dd data-config-text="offers.apartments.bookingWindow">Бронирование проживания только Пн–Чт</dd>
-                      </div>
-                      <div>
-                        <dt>Цена</dt>
-                        <dd data-config-text="offers.apartments.price" data-config-fallback="по запросу">по запросу</dd>
-                      </div>
-                    </dl>
-                    <a class="btn btn-primary" href="#contacts" data-format-cta data-format-value="apartments">Забронировать этот формат</a>
-                    <a class="format-terms-link" href="#terms">Общие условия</a>
-                  </aside>
                 </div>
               </div>
             </article>
 
-            <article class="format-card accordion-item" data-format-item>
-              <div class="format-card-head">
-                <span class="format-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M4 20V8h4V4h8v4h4v12H4Zm2-2h12v-8H6v8Zm4-10h4V6h-4v2Zm-2 4h2v2H8v-2Zm4 0h2v2h-2v-2Zm4 0h2v2h-2v-2Z"/></svg>
-                </span>
-                <div class="format-copy">
+            <article
+              class="format-scene format-scene-center accordion-item"
+              data-format-item
+              data-format-key="eveningRental"
+              data-config-bg="offers.eveningRental.image"
+            >
+              <img
+                class="format-scene-media"
+                src="assets/img/format-evening.svg"
+                data-config-src="offers.eveningRental.image"
+                alt="Вечерний формат «ТеремХаус» без проживания"
+                loading="lazy"
+                decoding="async"
+              >
+              <div class="format-scene-shade" aria-hidden="true"></div>
+              <div class="format-scene-inner">
+                <div class="format-scene-copy">
+                  <p class="format-number">Формат 03</p>
                   <p class="format-kicker" data-config-text="offers.eveningRental.keyFact">только на вечер</p>
                   <h3 data-config-text="offers.eveningRental.title">Вечер без проживания</h3>
                   <p data-config-text="offers.eveningRental.note">Гостиная, SPA или терраса без ночёвки</p>
-                </div>
-                <dl class="format-price">
-                  <dt>Цена</dt>
-                  <dd data-config-text="offers.eveningRental.price" data-config-fallback="по запросу">по запросу</dd>
-                </dl>
-                <button class="format-toggle" type="button" aria-expanded="false" data-format-toggle>
-                  Подробнее
-                  <span aria-hidden="true"></span>
-                </button>
-              </div>
-              <div class="accordion-panel format-panel" data-format-panel>
-                <div class="format-panel-inner">
-                  <div class="format-panel-main">
-                    <p data-config-text="offers.eveningRental.summary">
-                      Формат для вечера или камерного мероприятия без проживания и ночёвки.
-                    </p>
-                    <div class="format-detail-grid">
-                      <div>
-                        <h4>Что можно арендовать</h4>
-                        <ul>
-                          <li data-config-text="offers.eveningRental.includes.living">гостиная</li>
-                          <li data-config-text="offers.eveningRental.includes.spa">SPA-зона</li>
-                          <li data-config-text="offers.eveningRental.includes.terrace">терраса</li>
-                        </ul>
+                  <dl class="format-price">
+                    <dt>Цена</dt>
+                    <dd data-config-text="offers.eveningRental.price" data-config-fallback="по запросу">по запросу</dd>
+                  </dl>
+                  <div class="format-actions">
+                    <button class="format-toggle" type="button" aria-expanded="false" data-format-toggle>
+                      Подробнее
+                      <span aria-hidden="true"></span>
+                    </button>
+                    <a class="btn btn-primary" href="#contacts" data-format-cta data-format-value="eveningRental">
+                      Забронировать этот формат
+                    </a>
+                  </div>
+                  <div class="accordion-panel format-panel" data-format-panel>
+                    <div class="format-panel-inner">
+                      <div class="format-panel-main">
+                        <p data-config-text="offers.eveningRental.summary">
+                          Формат для вечера или камерного мероприятия без проживания и ночёвки.
+                        </p>
+                        <div class="format-detail-grid">
+                          <div>
+                            <h4>Что можно арендовать</h4>
+                            <ul>
+                              <li data-config-text="offers.eveningRental.includes.living">гостиная</li>
+                              <li data-config-text="offers.eveningRental.includes.spa">SPA-зона</li>
+                              <li data-config-text="offers.eveningRental.includes.terrace">терраса</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h4>Что не входит</h4>
+                            <ul>
+                              <li data-config-text="offers.eveningRental.excludes.overnight">Без проживания и ночёвки</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="format-addons">
+                          <h4>Стоимость вечерней аренды</h4>
+                          <dl>
+                            <div>
+                              <dt>Гостиная</dt>
+                              <dd data-config-text="offers.eveningRental.living" data-config-fallback="по запросу">по запросу</dd>
+                            </div>
+                            <div>
+                              <dt>SPA</dt>
+                              <dd data-config-text="offers.eveningRental.spa" data-config-fallback="по запросу">по запросу</dd>
+                            </div>
+                            <div>
+                              <dt>Терраса</dt>
+                              <dd data-config-text="offers.eveningRental.terrace" data-config-fallback="по запросу">по запросу</dd>
+                            </div>
+                          </dl>
+                        </div>
                       </div>
-                      <div>
-                        <h4>Что не входит</h4>
-                        <ul>
-                          <li data-config-text="offers.eveningRental.excludes.overnight">Без проживания и ночёвки</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="format-addons">
-                      <h4>Стоимость вечерней аренды</h4>
-                      <dl>
-                        <div>
-                          <dt>Гостиная</dt>
-                          <dd data-config-text="offers.eveningRental.living" data-config-fallback="по запросу">по запросу</dd>
-                        </div>
-                        <div>
-                          <dt>SPA</dt>
-                          <dd data-config-text="offers.eveningRental.spa" data-config-fallback="по запросу">по запросу</dd>
-                        </div>
-                        <div>
-                          <dt>Терраса</dt>
-                          <dd data-config-text="offers.eveningRental.terrace" data-config-fallback="по запросу">по запросу</dd>
-                        </div>
-                      </dl>
+                      <aside class="format-panel-aside">
+                        <dl>
+                          <div>
+                            <dt>Вместимость и помещения</dt>
+                            <dd data-config-text="offers.eveningRental.capacity">Гостиная, SPA или терраса — по выбранному сценарию</dd>
+                          </div>
+                          <div>
+                            <dt>Окно бронирования</dt>
+                            <dd data-config-text="offers.eveningRental.bookingWindow">Вечерний формат по согласованию</dd>
+                          </div>
+                          <div>
+                            <dt>Цена</dt>
+                            <dd data-config-text="offers.eveningRental.price" data-config-fallback="по запросу">по запросу</dd>
+                          </div>
+                        </dl>
+                        <a class="format-terms-link" href="#terms">Общие условия</a>
+                      </aside>
                     </div>
                   </div>
-                  <aside class="format-panel-aside">
-                    <dl>
-                      <div>
-                        <dt>Вместимость и помещения</dt>
-                        <dd data-config-text="offers.eveningRental.capacity">Гостиная, SPA или терраса — по выбранному сценарию</dd>
-                      </div>
-                      <div>
-                        <dt>Окно бронирования</dt>
-                        <dd data-config-text="offers.eveningRental.bookingWindow">Вечерний формат по согласованию</dd>
-                      </div>
-                      <div>
-                        <dt>Цена</dt>
-                        <dd data-config-text="offers.eveningRental.price" data-config-fallback="по запросу">по запросу</dd>
-                      </div>
-                    </dl>
-                    <a class="btn btn-primary" href="#contacts" data-format-cta data-format-value="eveningRental">Забронировать этот формат</a>
-                    <a class="format-terms-link" href="#terms">Общие условия</a>
-                  </aside>
                 </div>
               </div>
             </article>

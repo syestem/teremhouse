@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Evening rental format</title>
+  <desc id="desc">A warm evening illustration of a lounge, spa water reflections, terrace lights, and quiet event atmosphere.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0c1d1a"/>
+      <stop offset=".55" stop-color="#24463c"/>
+      <stop offset="1" stop-color="#8a6840"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7df9d" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#17352d" stop-opacity=".75"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#2f77a8"/>
+      <stop offset=".5" stop-color="#b28a4b"/>
+      <stop offset="1" stop-color="#24463c"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="74%" cy="18%" r="32%">
+      <stop offset="0" stop-color="#fff4d0" stop-opacity=".95"/>
+      <stop offset=".4" stop-color="#d8b36a" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#d8b36a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#night)"/>
+  <rect width="1600" height="1000" fill="url(#moon)"/>
+  <path d="M0 706c171-45 324-47 458-6 112 34 224 29 337-15 190-73 359-71 506 7 112 59 212 72 299 38v270H0Z" fill="#142d26"/>
+  <ellipse cx="1015" cy="790" rx="410" ry="68" fill="#07120f" opacity=".42" filter="url(#soft)"/>
+  <g transform="translate(315 248)">
+    <path d="M0 73h760v452H0Z" fill="#ead6b5" opacity=".18"/>
+    <path d="M56 30h648v495H56Z" fill="#142d26"/>
+    <path d="M96 71h568v260H96Z" fill="url(#glass)"/>
+    <path d="M96 358h568v130H96Z" fill="#e6d0a9" opacity=".86"/>
+    <path d="M120 387h205v58H120Z" fill="#24463c"/>
+    <path d="M358 387h90v101h-90Z" fill="#765322"/>
+    <path d="M481 387h155v58H481Z" fill="#24463c"/>
+    <path d="M96 331h568" stroke="#f8ecd4" stroke-width="9" opacity=".62"/>
+    <path d="M238 71v260M380 71v260M522 71v260" stroke="#f8ecd4" stroke-width="5" opacity=".34"/>
+  </g>
+  <g transform="translate(810 600)">
+    <ellipse cx="284" cy="109" rx="284" ry="86" fill="#101817" opacity=".36"/>
+    <ellipse cx="284" cy="80" rx="247" ry="68" fill="url(#water)"/>
+    <path d="M66 71c68 28 136 29 203 4 75-28 150-25 223 8" fill="none" stroke="#f9e3ad" stroke-width="7" opacity=".46"/>
+    <path d="M104 103c53 16 106 16 159 0 69-21 137-18 205 9" fill="none" stroke="#f9e3ad" stroke-width="6" opacity=".36"/>
+  </g>
+  <g opacity=".82">
+    <circle cx="326" cy="236" r="7" fill="#f7df9d"/>
+    <circle cx="429" cy="202" r="6" fill="#f7df9d"/>
+    <circle cx="548" cy="221" r="7" fill="#f7df9d"/>
+    <circle cx="661" cy="205" r="6" fill="#f7df9d"/>
+    <circle cx="779" cy="232" r="7" fill="#f7df9d"/>
+    <path d="M326 236c101-46 218-51 352-14 37 10 71 13 101 10" fill="none" stroke="#f7df9d" stroke-width="2" opacity=".55"/>
+  </g>
+  <path d="M0 855c202-46 400-43 594 10 145 40 290 38 435-5 196-58 386-48 571 31v109H0Z" fill="#0e221d" opacity=".9"/>
+</svg>

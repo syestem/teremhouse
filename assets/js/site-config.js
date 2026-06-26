@@ -99,6 +99,8 @@ window.SITE_CONFIG = {
       title: "Весь коттедж",
       formLabel: "Весь коттедж",
       keyFact: "всё пространство",
+      // TODO: замените на путь к реальному фото формата.
+      image: "assets/img/format-whole.svg",
       // TODO: укажите стоимость аренды всего коттеджа.
       price: "[TODO]",
       note: "Всё пространство открыто",
@@ -121,6 +123,8 @@ window.SITE_CONFIG = {
       formLabel: "Апартамент",
       count: 3,
       keyFact: "проживание Пн–Чт",
+      // TODO: замените на путь к реальному фото апартаментов.
+      image: "assets/img/format-apartments.svg",
       // TODO: укажите стоимость проживания в апартаменте.
       price: "[TODO]",
       bookingDays: "Пн–Чт",
@@ -152,6 +156,8 @@ window.SITE_CONFIG = {
       title: "Вечер без проживания",
       formLabel: "Аренда на вечер (без проживания)",
       keyFact: "только на вечер",
+      // TODO: замените на путь к реальному фото вечернего формата.
+      image: "assets/img/format-evening.svg",
       // TODO: при необходимости укажите общую стартовую стоимость вечернего формата.
       price: "[TODO]",
       note: "Гостиная, SPA или терраса без ночёвки",
